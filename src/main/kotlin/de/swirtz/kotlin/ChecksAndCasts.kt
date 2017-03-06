@@ -13,6 +13,12 @@ fun main(args: Array<String>) {
     if (x is String && x.isNotEmpty()) {
         print("Automatic cast example result: ${x.length}") // x is automatically cast to String
     }
+
+    val anyString:Any = "bla"
+    //unsafe cast, may throw Exception
+    val unsageCastToString:String = anyString as String
+    //safe cast, may result in null
+    val safeCastToString:String? = anyString as? String
 }
 
 //check type at runtime with is and !is
