@@ -1,5 +1,9 @@
 package de.swirtz.kotlin
 
+/**
+ * Created on 06.03.2017.
+ * @author: simon-wirtz
+ */
 //Declare new Data Class
 data class Person(val age: Int, val name: String, val country: String = "Germany")
 

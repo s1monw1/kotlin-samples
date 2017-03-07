@@ -2,8 +2,8 @@ package de.swirtz.kotlin
 
 /**
  * Created on 06.03.2017.
+ * @author: simon-wirtz
  */
-
 fun main(args: Array<String>) {
     val list = (0..100)
     val sub = list.filter { it % 2 == 0 && it <= 50 }
@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
     val sum = { x: Int, y: Int -> x + y }
     println("3 + 10 = ${sum.invoke(3, 10)}")
 
-    //Lambda accessing its closure (variable in outer scope)
+    //Lambda accessing its' closure (variable in outer scope)
     var completeSum = 0
     list.forEach {
         completeSum += it
