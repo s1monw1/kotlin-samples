@@ -14,14 +14,17 @@ fun main(args: Array<String>) {
         print("Automatic cast example result: ${x.length}") // x is automatically cast to String
     }
 
-    val anyString:Any = "bla"
+    val anyString: Any = "bla"
     //unsafe cast, may throw Exception
-    val unsafeCastToString:String = anyString as String
+    val unsafeCastToString: String = anyString as String
     //safe cast, may result in null
-    val safeCastToString:String? = anyString as? String
+    val safeCastToString: String? = anyString as? String
 }
 
-//check type at runtime with is and !is
+/**
+ * check type at runtime with is and !is
+ * FYI: Any in Kotlin ~ Object in Java
+ */
 fun checkType(inst: Any) {
     if (inst is String) {
         println("String value: $inst")
