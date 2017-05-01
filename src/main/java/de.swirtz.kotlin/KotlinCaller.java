@@ -11,7 +11,6 @@ public class KotlinCaller {
         kotlinInstance.getType();
 
         //        LambdaFunKt.applyToList()
-        
 
     }
 }
