@@ -7,14 +7,26 @@ import org.slf4j.LoggerFactory
  * @author: simon-wirtz
  */
 //Declare new Data Class
-data class Person(val age: Int, val name: String, val country: String = "Germany"){
+data class Person(val age: Int, val name: String, val country: String = "Germany") {
     companion object {
         val LOG = LoggerFactory.getLogger(Person::class.java.name)
     }
 
     init {
-    LOG.debug("Person created ${this}")
+        LOG.debug("Person created ${this}")
     }
+
+    //Mutable property with custom accessor methods using a backing field
+    var mutableProp: String = "initalValue"
+        get() {
+            println("mutableProp get() called")
+            return field
+        }
+        set(value) {
+            println("mutableProp set('$value') called")
+            field = value
+        }
+
 }
 
 //Method Syntax for MAIN
@@ -31,4 +43,8 @@ fun main(args: Array<String>) {
     //Destructuring, using componentX functions
     val (age, name, city) = person
     Person.LOG.debug("$name, $age years of age, from $city")
+
+    println("MutableProp: ${person.mutableProp}")
+    person.mutableProp = "changed"
+    println("MutableProp: ${person.mutableProp}")
 }
