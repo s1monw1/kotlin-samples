@@ -17,7 +17,7 @@ data class Person(val age: Int, val name: String, val country: String = "Germany
     }
 
     //Mutable property with custom accessor methods using a backing field
-    var mutableProp: String = "initalValue"
+    var mutableProp: String = "initialValue"
         get() {
             println("mutableProp get() called")
             return field
