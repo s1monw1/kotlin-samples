@@ -5,9 +5,9 @@ package de.swirtz.kotlin
  * @author: simon-wirtz
  */
 fun main(args: Array<String>) {
-    val notNullable: String = "abc";
+    val notNullable: String = "abc"
     //Compiler Error
-    // notNullable = null;
+    //notNullable = null
     val nullable: String?
     nullable = null
 

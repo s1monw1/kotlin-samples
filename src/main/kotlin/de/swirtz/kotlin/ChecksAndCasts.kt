@@ -1,5 +1,6 @@
 package de.swirtz.kotlin
 
+
 /**
  * Created on 06.03.2017.
  * @author: simon-wirtz
@@ -19,6 +20,8 @@ fun main(args: Array<String>) {
     val unsafeCastToString: String = anyString as String
     //safe cast, may result in null
     val safeCastToString: String? = anyString as? String
+
+
 }
 
 /**

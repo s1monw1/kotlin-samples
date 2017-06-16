@@ -1,3 +1,4 @@
+import de.swirtz.kotlin.ChecksAndCastsKt;
 import de.swirtz.kotlin.LambdaFunKt;
 import de.swirtz.kotlin.generics.ClassWithTypeParam;
 
@@ -9,7 +10,6 @@ public class KotlinCaller {
     public static void main(String[] args) {
         ClassWithTypeParam<Byte> kotlinInstance = new ClassWithTypeParam<Byte>((byte) 10);
         kotlinInstance.getType();
-
         //        LambdaFunKt.applyToList()
 
     }
