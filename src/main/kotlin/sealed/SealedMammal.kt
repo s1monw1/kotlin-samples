@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
     println(greetMammal(Cat("Garfield")))
     println(greetMammal(Human("Peter", "Designer")))
     val (x,y) = Human("","")
-    
+
 }
 
 fun greetMammal(mammal: Mammal) =
