@@ -1,9 +1,5 @@
 package de.swirtz.kotlin
 
-/**
- * Created by simonw on 16.06.17.
- */
-
 
 fun main(args: Array<String>) {
     for (i in 0..5) {
