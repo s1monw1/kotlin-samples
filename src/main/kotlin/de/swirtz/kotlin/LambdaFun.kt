@@ -12,6 +12,11 @@ fun main(args: Array<String>) {
     val sub2 = applyToList(list.toList(), { i -> i > 42 })
     println("Numbers greater 42 with lambda example (${sub2.size} Results): \n$sub2")
 
+
+    fun foo(i: Int): Boolean = i > 3
+
+    applyToList(list.toList(), ::foo)
+
     //simple Lambda expression
     val sum = { x: Int, y: Int -> x + y }
     println("3 + 10 = ${sum.invoke(3, 10)}")

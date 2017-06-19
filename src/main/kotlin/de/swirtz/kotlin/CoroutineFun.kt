@@ -14,6 +14,10 @@ val LOG = LoggerFactory.getLogger("CoroutineFun-Example")
  * @author: simon-wirtz
  */
 fun main(args: Array<String>) {
+    fun getTime(): Instant {
+        return Instant.now().atZone(ZoneId.systemDefault()).toInstant()
+    }
+
     LOG.debug("${getTime()}: Start")
 
     // Start a coroutine
@@ -26,6 +30,3 @@ fun main(args: Array<String>) {
     LOG.debug("${getTime()}: Stop")
 }
 
-fun getTime(): Instant {
-    return Instant.now().atZone(ZoneId.systemDefault()).toInstant()
-}
