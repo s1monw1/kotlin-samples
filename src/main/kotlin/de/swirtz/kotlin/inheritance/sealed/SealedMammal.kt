@@ -1,4 +1,4 @@
-package sealed
+package de.swirtz.kotlin.inheritance.sealed
 
 sealed class Mammal(val name: String)
 
@@ -8,7 +8,7 @@ data class Human(val humanName: String, val job: String) : Mammal(humanName)
 fun main(args: Array<String>) {
     println(greetMammal(Cat("Garfield")))
     println(greetMammal(Human("Peter", "Designer")))
-    val (x,y) = Human("","")
+    val (x,y) = Human("", "")
 
 }
 

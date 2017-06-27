@@ -1,4 +1,8 @@
-.idea
-out
-*.iml
+.gradle
 target
+build
+.vertx
+workplace.xml
+tasks.xml
+.idea/libraries/Gradle*xml
+.iws
