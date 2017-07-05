@@ -1,4 +1,4 @@
-package de.swirtz.kotlin
+package lambda
 
 /**
  * Created on 06.03.2017.
