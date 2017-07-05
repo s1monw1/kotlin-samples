@@ -1,0 +1,3 @@
+== Demo of Kotlin language features
+
+This repository contains simple examples of *Kotlin*'s features.
