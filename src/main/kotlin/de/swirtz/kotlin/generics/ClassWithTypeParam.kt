@@ -40,10 +40,10 @@ fun main(args: Array<String>) {
 //from is projected, use-site variance
 fun copy(from: Array<out Any>, to: Array<in Any>) {
     println("copy called")
-    to.set(0, from.get(0))
+    to[0] = from[0]
 
 }
 
 fun <T> genericFunction(item: T) : List<T>{
-    return arrayListOf<T>(item)
+    return arrayListOf(item)
 }
