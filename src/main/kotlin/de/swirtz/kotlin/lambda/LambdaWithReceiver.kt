@@ -1,4 +1,4 @@
-package lambda
+package de.swirtz.kotlin.lambda
 
 /**
  * Created by simonw on 29.06.17.

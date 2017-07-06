@@ -1,3 +1,6 @@
 == Demo of Kotlin language features
 
-This repository contains simple examples of *Kotlin*'s features.
+This repository contains simple examples of *Kotlin*'s features. It's some kind of personal playground for trying out
+ different features, developing show cases for presentations, blogs etc.
+
+
