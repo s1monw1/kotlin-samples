@@ -1,3 +1,4 @@
+
 package de.swirtz.kotlin.coroutines
 
 import kotlinx.coroutines.experimental.CommonPool
@@ -25,7 +26,8 @@ fun counterActor() = actor<CounterMsg>(CommonPool) {
     }
 }
 
-suspend fun getCurrentCount(counter: ActorJob<CounterMsg>, response: Channel<Int>): Int {
+suspend fun getCurrentCount(counter: ActorJob<CounterMsg>): Int {
+    val response = Channel<Int>()
     counter.send(CounterMsg.GetCounter(response))
     val receive = response.receive()
     println("Counter = $receive")
@@ -34,10 +36,9 @@ suspend fun getCurrentCount(counter: ActorJob<CounterMsg>, response: Channel<Int
 
 fun main(args: Array<String>) = runBlocking<Unit> {
     val counter = counterActor()
-    val response = Channel<Int>()
 
     launch(CommonPool) {
-            while(getCurrentCount(counter, response) < 100){
+            while(getCurrentCount(counter) < 100){
                 delay(100)
                 println("sending IncCounter message")
                 counter.send(CounterMsg.IncCounter)
@@ -45,10 +46,9 @@ fun main(args: Array<String>) = runBlocking<Unit> {
         }
 
     launch(CommonPool) {
-        while ( getCurrentCount(counter, response) < 100) {
+        while ( getCurrentCount(counter) < 100) {
             delay(200)
         }
     }.join()
-    println("Counter = ${response.receive()}")
     counter.close() // shutdown the actor
 }
