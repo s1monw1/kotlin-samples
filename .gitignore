@@ -6,3 +6,5 @@ workplace.xml
 tasks.xml
 .idea/libraries/Gradle*xml
 .iws
+.idea
+*.iml
