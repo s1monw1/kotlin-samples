@@ -25,15 +25,20 @@ suspend fun sendEmailSuspending(): Boolean {
     }
     val recipient = async(CommonPool) { getReceiverAdressFromDatabase() }
     println("Waiting for email data")
-    val sendStatus = async(CommonPool) { sendEmail(recipient.await(), msg.await()) }
+
+    val sendStatus = async(CommonPool) {
+        sendEmail(recipient.await(), msg.await())
+    }
     return sendStatus.await()
 }
 
 fun main(args: Array<String>) = runBlocking(CommonPool) {
-    launch(CommonPool) {
+    val job = launch(CommonPool) {
         sendEmailSuspending()
-        LOG.debug("Email sent successfully.")
-    }.join()
+        println("Email sent successfully.")
+    }
+    job.join()
+    println("Finished")
 
 }
 
