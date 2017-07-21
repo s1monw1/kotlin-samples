@@ -7,7 +7,7 @@ import java.time.ZoneId
 import java.util.concurrent.atomic.AtomicInteger
 
 
-suspend fun getReceiverAdressFromDatabase(): String {
+suspend fun getReceiverAddressFromDatabase(): String {
     delay(1000)
     return "coroutine@kotlin.org"
 }
@@ -23,7 +23,7 @@ suspend fun sendEmailSuspending(): Boolean {
         delay(500)
         "The message content"
     }
-    val recipient = async(CommonPool) { getReceiverAdressFromDatabase() }
+    val recipient = async(CommonPool) { getReceiverAddressFromDatabase() }
     println("Waiting for email data")
 
     val sendStatus = async(CommonPool) {
