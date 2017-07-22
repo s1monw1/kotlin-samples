@@ -1,4 +1,5 @@
 .gradle
+out
 target
 build
 .vertx

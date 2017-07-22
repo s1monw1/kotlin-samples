@@ -4,7 +4,7 @@ data class Fraction(val numerator: Int, val denominator: Int) : Comparable<Fract
 
     val decimal by lazy { numerator.toDouble() / denominator }
 
-    override operator fun compareTo(other: Fraction) = decimal.compareTo(other.decimal)
+    override fun compareTo(other: Fraction) = decimal.compareTo(other.decimal)
 
     override fun toString() = "$numerator/$denominator"
 
