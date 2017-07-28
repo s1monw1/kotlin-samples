@@ -20,6 +20,7 @@ fun main(args: Array<String>) {
     //simple Lambda expression
     val sum = { x: Int, y: Int -> x + y }
     println("3 + 10 = ${sum.invoke(3, 10)}")
+    println("3 + 10 = ${sum(3, 10)}")
 
     //Lambda accessing its closure (variable in outer scope)
     var completeSum = 0
