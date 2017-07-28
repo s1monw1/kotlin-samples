@@ -4,5 +4,6 @@ build
 .vertx
 workplace.xml
 tasks.xml
-.idea/libraries/Gradle*xml
+.idea
+**.iml
 .iws
