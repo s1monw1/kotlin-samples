@@ -1,4 +1,4 @@
-package de.swirtz.kotlin
+package de.swirtz.kotlin.misc
 
 /**
  * Created on 06.03.2017.

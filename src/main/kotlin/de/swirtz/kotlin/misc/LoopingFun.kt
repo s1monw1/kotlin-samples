@@ -1,4 +1,4 @@
-package de.swirtz.kotlin
+package de.swirtz.kotlin.misc
 
 
 fun main(args: Array<String>) {
