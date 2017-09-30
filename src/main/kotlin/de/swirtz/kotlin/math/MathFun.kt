@@ -1,4 +1,4 @@
-package math
+package de.swirtz.kotlin.math
 
 import kotlin.math.*
 
