@@ -16,9 +16,12 @@ fun mixColours(col1: Colour, col2: Colour): Colour =
             else -> throw IllegalArgumentException("Colours $col1 & $col2 cannot be mixed!")
         }
 
+
 fun main(args: Array<String>) {
     println(mixColours(Colour.BLUE, Colour.YELLOW))
     println(mixColours(Colour.YELLOW, Colour.BLUE))
     println(mixColours(Colour.RED, Colour.YELLOW))
     println(mixColours(Colour.YELLOW, Colour.RED))
+
+
 }

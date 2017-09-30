@@ -3,9 +3,9 @@ out
 target
 build
 .vertx
-workplace.xml
-tasks.xml
-.idea/libraries/Gradle*xml
+workplace.mainTag
+tasks.mainTag
+.idea/libraries/Gradle*mainTag
 .iws
 .idea
 *.iml
