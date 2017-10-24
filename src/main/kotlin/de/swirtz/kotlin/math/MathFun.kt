@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
     10f.pow(2) //100
     ln(E) //1
     10.542.roundToInt() //11
-    sin(0.5 * PI) //0
+    sin(0.5 * PI) //1
+
 
 }

@@ -14,6 +14,8 @@ fun main(args: Array<String>) {
                     .|/ \"""
     println(kotlinLogo.trimMargin("."))
 
+    "myString".substring(0..3)
+
 
 }
 
