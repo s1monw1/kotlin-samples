@@ -1,10 +1,7 @@
 buildscript {
-    ext.kotlin_version = "1.2.0-beta-31"
+    ext.kotlin_version = "1.1.51"
     repositories {
         mavenCentral()
-        maven{
-            url = "http://dl.bintray.com/kotlin/kotlin-eap-1.2"
-        }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -25,13 +22,10 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
-    maven{
-        url = "http://dl.bintray.com/kotlin/kotlin-eap-1.2"
-    }
 }
 
 dependencies {
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.16"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.19.3"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
