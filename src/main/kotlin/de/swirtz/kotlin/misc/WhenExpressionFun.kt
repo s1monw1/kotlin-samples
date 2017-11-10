@@ -18,10 +18,10 @@ fun mixColours(col1: Colour, col2: Colour): Colour =
 
 
 fun main(args: Array<String>) {
-    println(mixColours(Colour.BLUE, Colour.YELLOW))
-    println(mixColours(Colour.YELLOW, Colour.BLUE))
-    println(mixColours(Colour.RED, Colour.YELLOW))
-    println(mixColours(Colour.YELLOW, Colour.RED))
+    fun <T> T.print() = println(this)
 
-
+    mixColours(Colour.BLUE, Colour.YELLOW).print()
+    mixColours(Colour.YELLOW, Colour.BLUE).print()
+    mixColours(Colour.RED, Colour.YELLOW).print()
+    mixColours(Colour.YELLOW, Colour.RED).print()
 }

@@ -13,4 +13,18 @@ fun main(args: Array<String>) {
         printMe()
     }
 
+    val nullable: String? = "anything"
+    nullable?.let {
+        println(it)
+    }
+
+}
+
+class AlsoTester {
+    var state: Int = 0
+
+    fun next(): Int {
+        //do some crazy stuff
+        return 1.also { state = it }
+    }
 }

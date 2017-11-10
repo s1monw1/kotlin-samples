@@ -2,15 +2,13 @@ package de.swirtz.kotlin.misc
 
 import org.slf4j.LoggerFactory
 
+val LOG = LoggerFactory.getLogger(Person::class.java.name)
+
 /**
  * Created on 06.03.2017.
  * @author: simon-wirtz
  */
-//Declare new Data Class
 data class Person(val age: Int, val name: String, val country: String = "Germany") {
-    companion object {
-        val LOG = LoggerFactory.getLogger(Person::class.java.name)
-    }
 
     init {
         LOG.debug("Person created ${this}")
@@ -29,20 +27,19 @@ data class Person(val age: Int, val name: String, val country: String = "Germany
 
 }
 
-//Method Syntax for MAIN
 fun main(args: Array<String>) {
     //create new instance, toString equals etc. is overridden
     val person = Person(14, "Pete")
-    Person.LOG.debug("Standard toString(): $person")
+    LOG.debug("Standard toString(): $person")
     // '==' means _structural equality_, whereas '===' means _referential equality_
-    Person.LOG.debug("Two different Person instances are structurally equal? ${person == Person(14, "Pete")}")
-    Person.LOG.debug("Two different Person instances are referentially equal? ${person === Person(14, "Pete")}")
-    Person.LOG.debug("Two Persons from different countries are structurally equal? ${person == Person(14, "Pete", "Denmark")}")
+    LOG.debug("Two different Person instances are structurally equal? ${person == Person(14, "Pete")}")
+    LOG.debug("Two different Person instances are referentially equal? ${person === Person(14, "Pete")}")
+    LOG.debug("Two Persons from different countries are structurally equal? ${person == Person(14, "Pete", "Denmark")}")
 
 
     //Destructuring, using componentX functions
     val (age, name, city) = person
-    Person.LOG.debug("$name, $age years of age, from $city")
+    LOG.debug("$name, $age years of age, from $city")
 
     println("MutableProp: ${person.mutableProp}")
     person.mutableProp = "changed"

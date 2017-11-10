@@ -13,28 +13,22 @@ import java.time.ZoneId
  */
 
 fun main(args: Array<String>) {
-    fun getTime(): Instant {
-        return Instant.now().atZone(ZoneId.systemDefault()).toInstant()
-    }
+    fun getTime(): Instant = Instant.now().atZone(ZoneId.systemDefault()).toInstant()
+    val start = getTime().also { LOG.debug("$it: Start") }
 
-    val start = getTime()
-    LOG.debug("$start: Start")
-
-    var c = 0
-    runBlocking (CoroutineName("blockingRoutine")){
-        val singleThreadContext = newSingleThreadContext("mysinglethread")
-        launch(singleThreadContext) {
+    var count = 0
+    runBlocking(CoroutineName("blockingRoutine")) {
+        launch(newSingleThreadContext("mysinglethread")) {
             val jobs = List(1_000_000) {
-                launch(context) {
-                    c += 1
+                launch(coroutineContext) {
+                    count += 1
                 }
             }
             jobs.forEach { it.join() }
         }.join()
     }
-    val end = getTime()
-    LOG.debug("$end: End")
-    LOG.debug("Duration: ${end.epochSecond-start.epochSecond}")
-    println(c)
+    val end = getTime().also { LOG.debug("$it: End") }
+    LOG.debug("Duration: ${end.epochSecond - start.epochSecond} s")
+    println("Counter: $count")
 
 }

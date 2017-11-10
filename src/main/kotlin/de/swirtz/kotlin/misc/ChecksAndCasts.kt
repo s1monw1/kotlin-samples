@@ -7,7 +7,6 @@ package de.swirtz.kotlin.misc
  */
 fun main(args: Array<String>) {
     checkType("StringX")
-    checkTypeWithWhen(42)
 
     val x = "AnotherString"
     // x is automatically cast to string on the right-hand side of `&&`
@@ -27,30 +26,16 @@ fun main(args: Array<String>) {
  * check type at runtime with is and !is
  * FYI: Any in Kotlin ~ Object in Java
  */
-fun checkType(inst: Any) =
-        if (inst is String) {
-            println("String value: $inst")
-            //Automatic cast by compile after is-check
-            println("String length: ${inst.length}")
-        } else if (inst is Int) {
-            println("Int value: $inst")
-            //Automatic cast by compile after is-check
-            println("Int multiplied with 10: ${inst * 10}")
-        } else println("Any value: $inst")
-
-//check type at runtime with is and !is
-fun checkTypeWithWhen(inst: Any) {
-    when (inst) {
-        is String -> {
-            println("String value: $inst")
-            //Automatic cast by compile after is-check
-            println("String length: ${inst.length}")
-        }
-        is Int -> {
-            println("Int value: $inst")
-            //Automatic cast by compile after is-check
-            println("Int multiplied with 10: ${inst * 10}")
-        }
-        else -> println("Any value: $inst")
+fun checkType(inst: Any) = when (inst) {
+    is String -> {
+        println("String value: $inst")
+        //Automatic cast by compile after is-check
+        println("String length: ${inst.length}")
     }
+    is Int -> {
+        println("Int value: $inst")
+        //Automatic cast by compile after is-check
+        println("Int multiplied with 10: ${inst * 10}")
+    }
+    else -> println("Any value: $inst")
 }

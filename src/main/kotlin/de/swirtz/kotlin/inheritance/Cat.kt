@@ -2,14 +2,13 @@ package de.swirtz.kotlin.inheritance
 
 import org.slf4j.LoggerFactory
 
+val LOG = LoggerFactory.getLogger(Cat::class.java.name)
+
 /**
  * Created on 09.03.2017.
  * @author: simon-wirtz
  */
 class Cat(val catName: String) : Animal(catName), ExampleInterface {
-    companion object {
-        val LOG = LoggerFactory.getLogger(Cat::class.java.name)
-    }
 
     override fun abstractFunction(): String = "Meow"
 
@@ -25,13 +24,9 @@ class Cat(val catName: String) : Animal(catName), ExampleInterface {
     override fun interfaceFunction() = "Override of interface function"
 
     //Override of Any-methods
-    override fun hashCode(): Int {
-        return catName.hashCode()
-    }
+    override fun hashCode(): Int = catName.hashCode()
 
-    override fun toString(): String {
-        return "Cat(catName='$catName')"
-    }
+    override fun toString(): String = "Cat(catName='$catName')"
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -40,16 +35,15 @@ class Cat(val catName: String) : Animal(catName), ExampleInterface {
         if (catName != other.catName) return false
         return true
     }
-
-
-
 }
 
 fun main(args: Array<String>) {
-    val a = Cat("cat")
-    Cat.LOG.debug("Cat created: $a")
-    Cat.LOG.debug("Cat abstractFunction: ${a.abstractFunction()}")
-    Cat.LOG.debug("Cat openFunction: ${a.openFunction()}")
-    Cat.LOG.debug("Cat notOpenFunction: ${a.notOpenFunction()}")
-    Cat.LOG.debug("Cat interfaceFunction: ${a.interfaceFunction()}")
+    with(Cat("cat")) {
+        LOG.debug("Cat created: $this")
+        LOG.debug("Cat abstractFunction: ${abstractFunction()}")
+        LOG.debug("Cat openFunction: ${openFunction()}")
+        LOG.debug("Cat notOpenFunction: ${notOpenFunction()}")
+        LOG.debug("Cat interfaceFunction: ${interfaceFunction()}")
+    }
+
 }

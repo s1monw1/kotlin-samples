@@ -11,13 +11,11 @@ fun main(args: Array<String>) = runBlocking {
     val s = System.currentTimeMillis()
     val i = AtomicInteger()
 
-
-//    val context = newSingleThreadContext("launch-SingleThread")
-//    List(1_000_000) {
-//        launch(context + CoroutineName("myroutine")) {
-//            i.incrementAndGet()
-//        }
-//    }.forEach { it.join() }
+    List(1_000_000) {
+        launch(newSingleThreadContext("launch-SingleThread") + CoroutineName("myroutine")) {
+            i.incrementAndGet()
+        }
+    }.forEach { it.join() }
 
     (1..1_000_000).forEach { i.incrementAndGet()}
     println("Value: $i, Duration: ${System.currentTimeMillis()-s}")

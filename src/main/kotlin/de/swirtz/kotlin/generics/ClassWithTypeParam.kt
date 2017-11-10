@@ -7,7 +7,7 @@ package de.swirtz.kotlin.generics
  *  What 'out' means: You can think of ClassWithTypeParam as being a producer of T's, and NOT a consumer of T's.
  */
 class ClassWithTypeParam<out T>(t: T) {
-    val type = t
+    private val type = t
 
     fun getTypeMember() = type
 }
@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
     val member1: Int = c1.getTypeMember()
     //type param can be inferred because of constructor argument
     val c2 = ClassWithTypeParam("StringParam")
-    val member2: String = c2.getTypeMember();
+    val member2: String = c2.getTypeMember()
     println("Member of Int-ParamType: $member1\nMember of String-ParamType: $member2")
 
     //declaration-side variance; notice the 'out' keyword in TypeParam-declaration of ClassWithTypeParam;
@@ -32,8 +32,8 @@ fun main(args: Array<String>) {
     copy(ints, any)
 //    not allowed!! copy(any, ints)
 
-    var intList:List<String> = genericFunction("String-List expected")
-    val stringList:List<Int> = genericFunction(11)
+    var intList: List<String> = genericFunction("String-List expected")
+    val stringList: List<Int> = genericFunction(11)
 
 }
 
@@ -41,9 +41,6 @@ fun main(args: Array<String>) {
 fun copy(from: Array<out Any>, to: Array<in Any>) {
     println("copy called")
     to[0] = from[0]
-
 }
 
-fun <T> genericFunction(item: T) : List<T>{
-    return arrayListOf(item)
-}
+fun <T> genericFunction(item: T): List<T> = arrayListOf(item)

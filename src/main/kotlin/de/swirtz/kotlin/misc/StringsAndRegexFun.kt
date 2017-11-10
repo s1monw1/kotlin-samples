@@ -16,6 +16,5 @@ fun main(args: Array<String>) {
 
     "myString".substring(0..3)
 
-
 }
 
