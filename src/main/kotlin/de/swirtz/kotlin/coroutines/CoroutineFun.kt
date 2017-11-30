@@ -50,5 +50,6 @@ fun main(args: Array<String>) {
         val sum = deferred.sumBy { it.await() }
         println("Sum: $sum")
     }
+
 }
 
