@@ -9,4 +9,4 @@ tasks.xml
 .idea
 **.iml
 .iws
-
+**SoTests.kt
