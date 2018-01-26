@@ -14,23 +14,18 @@ object GitHubApiCallerNextGen {
             return cachedLeadResult as Contributor
         }
         val contributors = with(client) {
-            val request = Request.Builder().run {
-                url(ENDPOINT)
-                build()
-            }
-
+            val request = Request.Builder().url(ENDPOINT).build()
             val response = request.let { req ->
                 newCall(req).execute().use { resp ->
                     resp.body()?.source()?.readByteArray()?.let { String(it) }
-                            ?: throw IllegalStateException("No response from server!")
-                }
+                } ?: throw IllegalStateException("No response from server!")
             }
+
             response.let {
                 println("response from git api: $it\n")
                 Gson().fromJson(it, Array<Contributor>::class.java)
             }
         }
-
         return contributors.first { it.login == name }.also {
             println("found kotlin lead: $it")
             this.cachedLeadResult = it
