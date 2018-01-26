@@ -5,17 +5,19 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 val ENDPOINT = "https://api.github.com/repos/jetbrains/kotlin/contributors"
+
 data class Contributor(val login: String, val contributions: Int)
 
 object GitHubApiCaller {
+    private val client = OkHttpClient()
 
     private var cachedLeadResult: Contributor? = null
 
     fun getKotlinContributor(name: String): Contributor {
         if (cachedLeadResult != null) {
+            println("return cached: $cachedLeadResult")
             return cachedLeadResult as Contributor
         }
-        val client = OkHttpClient()
         val request = Request.Builder()
             .url(ENDPOINT)
             .build()
@@ -45,5 +47,8 @@ object GitHubApiCaller {
 
 fun main(args: Array<String>) {
     GitHubApiCaller.getKotlinContributor("abreslav")
+    GitHubApiCaller.getKotlinContributor("abreslav")
+    GitHubApiCallerNextGen.getKotlinContributor("abreslav")
+    GitHubApiCallerNextGen.getKotlinContributor("abreslav")
 }
 
