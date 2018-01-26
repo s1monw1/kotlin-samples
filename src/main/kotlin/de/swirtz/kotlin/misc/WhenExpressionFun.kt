@@ -4,7 +4,6 @@ package de.swirtz.kotlin.misc
  * Created on 29.05.2017.
  * @author: simon-wirtz
  */
-
 enum class Colour {
     RED, BLUE, YELLOW, BLACK, ORANGE, GREEN
 }

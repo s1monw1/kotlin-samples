@@ -2,7 +2,6 @@
 package de.swirtz.kotlin.coroutines
 
 import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.channels.ActorJob
 import kotlinx.coroutines.experimental.channels.Channel
 import kotlinx.coroutines.experimental.channels.SendChannel
 import kotlinx.coroutines.experimental.channels.actor
@@ -26,7 +25,7 @@ fun counterActor() = actor<CounterMsg>(CommonPool) {
     }
 }
 
-suspend fun getCurrentCount(counter: ActorJob<CounterMsg>): Int {
+suspend fun getCurrentCount(counter: SendChannel<CounterMsg>): Int {
     val response = Channel<Int>()
     counter.send(CounterMsg.GetCounter(response))
     val receive = response.receive()
