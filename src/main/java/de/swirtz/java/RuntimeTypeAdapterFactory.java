@@ -131,6 +131,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         }
         this.baseType = baseType;
         this.typeFieldName = typeFieldName;
+
     }
 
     /**

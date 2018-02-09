@@ -51,4 +51,3 @@ fun main(args: Array<String>) {
     GitHubApiCallerNextGen.getKotlinContributor("abreslav")
     GitHubApiCallerNextGen.getKotlinContributor("abreslav")
 }
-

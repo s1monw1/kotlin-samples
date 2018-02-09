@@ -1,4 +1,4 @@
-package de.swirtz.kotlin.misc
+package de.swirtz.kotlin.delegation
 
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty

@@ -6,7 +6,7 @@ val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPlu
 val kotlinxCoroutinesVersion = "0.21.2"
 
 plugins {
-    kotlin("jvm") version "1.2.20"
+    kotlin("jvm") version "1.2.21"
 }
 
 kotlin {
@@ -18,6 +18,7 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
+    compile("io.reactivex.rxjava2:rxkotlin:2.2.0")
     compile(kotlin("stdlib-jre8", kotlinVersion))
     compile(kotlin("reflect", kotlinVersion))
     compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
