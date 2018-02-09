@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
-val kotlinxCoroutinesVersion = "0.21.2"
+val kotlinxCoroutinesVersion = "0.22.2"
 
 plugins {
     kotlin("jvm") version "1.2.21"
