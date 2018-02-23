@@ -1,5 +1,9 @@
 package de.swirtz.kotlin.scoping
 
+import kotlinx.coroutines.experimental.channels.*
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.runBlocking
+
 //run1
 fun notUsingReceiver(text: String?): Int {
     return 1234.also { println("the function did its job!") }
@@ -21,5 +25,31 @@ fun initAlsoAssign() {
 }
 
 fun main(args: Array<String>) {
-    println(BazBar { "123" }.getThatBaz())
+
+
+    fun produceNumbers()= produce<Int>(capacity = 99) {
+        var count = 0
+        for (i in 1..100) {
+            send(i)
+            count++
+        }
+        println("Sent: $count numbers")
+    }
+
+    val consumer = actor<Int>(capacity = Channel.UNLIMITED) {
+        var sum = 0
+        var count = 0
+        for (i in channel) {
+            sum += i
+            count++
+        }
+        println("Received: $count numbers")
+        println("Sum: $sum")
+    }
+
+    runBlocking {
+        val c = produceNumbers()
+        c.toChannel(consumer).close()
+    }
+
 }
