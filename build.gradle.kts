@@ -3,10 +3,10 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
-val kotlinxCoroutinesVersion = "0.22.2"
+val kotlinxCoroutinesVersion = "0.30.1"
 
 plugins {
-    kotlin("jvm") version "1.2.21"
+    kotlin("jvm") version "1.2.70"
 }
 
 kotlin {
@@ -34,9 +34,6 @@ dependencies {
 repositories {
     mavenCentral()
     jcenter()
-    maven {
-        setUrl("http://dl.bintray.com/kotlin/kotlinx.html/")
-    }
 }
 
 

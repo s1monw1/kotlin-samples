@@ -5,7 +5,7 @@ import kotlinx.coroutines.experimental.*
 fun main(args: Array<String>) = runBlocking {
     val startTime = System.currentTimeMillis()
     val jobs = arrayListOf<Job>()
-    jobs += launch {
+    jobs += GlobalScope.launch {
         var nextPrintTime = startTime
         var i = 0
         while (isActive) { // check if still active
@@ -17,7 +17,7 @@ fun main(args: Array<String>) = runBlocking {
     }
 
     //another job
-    jobs += launch {
+    jobs += GlobalScope.launch {
         while (isActive) { // check if still active
             if (System.currentTimeMillis() >= 42) {
                 println("Job2: Sleeping 42 ...")

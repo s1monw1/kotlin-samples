@@ -1,22 +1,20 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.CoroutineName
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.newSingleThreadContext
-import kotlinx.coroutines.experimental.runBlocking
-import java.util.concurrent.atomic.AtomicInteger
+import kotlinx.coroutines.experimental.*
 
 
-fun main(args: Array<String>) = runBlocking {
-    val s = System.currentTimeMillis()
-    val i = AtomicInteger()
+fun main(args: Array<String>) {
+    val context = newSingleThreadContext("launch-SingleThread")
+    runBlocking {
+        val s = System.currentTimeMillis()
+        var i = 0
 
-    List(1_000_000) {
-        launch(newSingleThreadContext("launch-SingleThread") + CoroutineName("myroutine")) {
-            i.incrementAndGet()
-        }
-    }.forEach { it.join() }
+        List(1_000_000) {
+            CoroutineScope(context).launch(CoroutineName("myroutine")) {
+                i += 1
+            }
+        }.forEach { it.join() }
 
-    (1..1_000_000).forEach { i.incrementAndGet()}
-    println("Value: $i, Duration: ${System.currentTimeMillis()-s}")
+        println("Value: $i, Duration: ${System.currentTimeMillis() - s}")
+    }
 }

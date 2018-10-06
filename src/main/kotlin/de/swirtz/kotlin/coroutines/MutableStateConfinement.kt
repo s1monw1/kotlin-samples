@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
                 }
             }
             jobs.forEach { it.join() }
-        }.join()
+        }
     }
     val end = getTime().also { LOG.debug("$it: End") }
     LOG.debug("Duration: ${end.epochSecond - start.epochSecond} s")

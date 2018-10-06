@@ -1,7 +1,6 @@
-
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.GlobalScope
 import kotlinx.coroutines.experimental.channels.Channel
 import kotlinx.coroutines.experimental.channels.SendChannel
 import kotlinx.coroutines.experimental.channels.actor
@@ -15,7 +14,7 @@ sealed class CounterMsg {
 }
 
 // This function launches a new counter actor
-fun counterActor() = actor<CounterMsg>(CommonPool) {
+fun counterActor() = GlobalScope.actor<CounterMsg> {
     var counter = 0 // actor state, not shared
     for (msg in channel) { // handle incoming messages
         when (msg) {
@@ -36,16 +35,16 @@ suspend fun getCurrentCount(counter: SendChannel<CounterMsg>): Int {
 fun main(args: Array<String>) = runBlocking<Unit> {
     val counter = counterActor()
 
-    launch(CommonPool) {
-            while(getCurrentCount(counter) < 100){
-                delay(100)
-                println("sending IncCounter message")
-                counter.send(CounterMsg.IncCounter)
-            }
+    GlobalScope.launch {
+        while (getCurrentCount(counter) < 100) {
+            delay(100)
+            println("sending IncCounter message")
+            counter.send(CounterMsg.IncCounter)
         }
+    }
 
-    launch(CommonPool) {
-        while ( getCurrentCount(counter) < 100) {
+    GlobalScope.launch {
+        while (getCurrentCount(counter) < 100) {
             delay(200)
         }
     }.join()

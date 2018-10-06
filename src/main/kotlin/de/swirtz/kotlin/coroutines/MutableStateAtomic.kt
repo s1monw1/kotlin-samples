@@ -1,7 +1,7 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.CoroutineName
+import kotlinx.coroutines.experimental.GlobalScope
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
 import java.time.Instant
@@ -23,9 +23,9 @@ fun main(args: Array<String>) {
 
     val c = AtomicInteger()
     runBlocking(CoroutineName("blockingRoutine")) {
-        launch(CommonPool) {
+        GlobalScope.launch {
             val jobs = List(1_000_000) {
-                launch(context) {
+                launch {
                     c.incrementAndGet()
                 }
             }

@@ -28,17 +28,19 @@ fun main(args: Array<String>) {
         }
     }
 
-    intoStream(html, System.out)
+    html.intoStream(System.out)
 }
 
-fun intoStream(doc: Element, out: OutputStream) {
+fun Element.intoStream(out: OutputStream) {
+    val dom = DOMSource(this)
     with(TransformerFactory.newInstance().newTransformer()) {
         setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no")
         setOutputProperty(OutputKeys.METHOD, "xml")
         setOutputProperty(OutputKeys.INDENT, "yes")
         setOutputProperty(OutputKeys.ENCODING, "UTF-8")
         setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4")
-        transform(DOMSource(doc),
-                StreamResult(OutputStreamWriter(out, "UTF-8")))
+        transform(
+            dom, StreamResult(OutputStreamWriter(out, "UTF-8"))
+        )
     }
 }

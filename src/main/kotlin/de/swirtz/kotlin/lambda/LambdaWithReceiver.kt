@@ -4,10 +4,10 @@ package de.swirtz.kotlin.lambda
  * Created by simonw on 29.06.17.
  */
 
-var greet: String.() -> Unit = { println("Hello $this") }
+var greet: String.() -> Unit = { println("Hello, my size is $length") }
 
 fun main(args: Array<String>) {
-    greet("Hadi")
+    "Dev".greet()
 
     println(StringBuilder("Hello ")
             .apply {
@@ -20,6 +20,7 @@ fun main(args: Array<String>) {
     println(message)
 
     println(myHigherOrderFun { "The Number is $it" })
+
 }
 
 fun myHigherOrderFun(functionArg: (Int) -> String) = functionArg(5)

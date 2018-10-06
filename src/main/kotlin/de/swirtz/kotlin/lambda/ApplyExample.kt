@@ -1,9 +1,12 @@
 package de.swirtz.kotlin.lambda
 
-data class GuiContainer(var width: Int = 0, var height: Int = 0, var background: String = "red") {
-    fun printMe() = println(this)
-
+class GuiContainer {
+    var width: Int = 0
+    var height: Int = 0
+    var background: String = "red"
+    fun printMe() = println("I'm a container: $this")
 }
+
 
 fun main(args: Array<String>) {
     val container = GuiContainer().apply {

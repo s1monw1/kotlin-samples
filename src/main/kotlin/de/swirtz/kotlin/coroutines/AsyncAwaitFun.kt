@@ -1,26 +1,43 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.runBlocking
-import java.lang.Thread.sleep
+import java.security.InvalidAlgorithmParameterException
+import java.util.Random
+import java.util.concurrent.ThreadLocalRandom
 
-fun read() {
-    println("into read")
-    sleep(1000)
-    println("fin read")
-}
 
-fun showScreen() {
-    println("into show")
+object Random {
 
-    sleep(1000)
-    println("shown")
+    private fun <T : Comparable<T>> checkConditions(left: T, right: T, leftLowerBound: T) {
+        if (left < leftLowerBound) {
+            throw InvalidAlgorithmParameterException(
+                "Left limit can 't be negative"
+            )
+        } else if (right <= left) {
+            throw InvalidAlgorithmParameterException(
+                "Right limit can't be less or equal than left limit"
+            )
+        }
+    }
 
-}
+    internal fun generatePositiveFloat(
+        leftLimit: Float = Float.MIN_VALUE,
+        rightLimit: Float = Float.MAX_VALUE
+    ): Float {
+        checkConditions(leftLimit, rightLimit, 0F)
+        return Random().nextFloat()
+    }
 
-fun main(args: Array<String>) = runBlocking {
-    val readVal = async { read() }
-    val shown = async { showScreen() }
-    readVal.await()
-    shown.await()
+
+    internal fun generatePositiveShort(
+        leftLimit: Short = 0,
+        rightLimit: Short = Short.MAX_VALUE
+    ): Short {
+        checkConditions(leftLimit, rightLimit, leftLimit)
+
+        return ThreadLocalRandom.current().nextInt(
+            leftLimit.toInt(),
+            rightLimit.toInt()
+        ).toShort()
+    }
+
 }

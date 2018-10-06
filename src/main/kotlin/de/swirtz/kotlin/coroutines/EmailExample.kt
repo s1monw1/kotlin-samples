@@ -1,10 +1,6 @@
 package de.swirtz.kotlin.coroutines
 
 import kotlinx.coroutines.experimental.*
-import org.slf4j.LoggerFactory
-import java.time.Instant
-import java.time.ZoneId
-import java.util.concurrent.atomic.AtomicInteger
 
 
 suspend fun getReceiverAddressFromDatabase(): String {
@@ -19,21 +15,21 @@ suspend fun sendEmail(r: String, msg: String): Boolean {
 }
 
 suspend fun sendEmailSuspending(): Boolean {
-    val msg = async(CommonPool) {
+    val msg = GlobalScope.async {
         delay(500)
         "The message content"
     }
-    val recipient = async(CommonPool) { getReceiverAddressFromDatabase() }
+    val recipient = GlobalScope.async { getReceiverAddressFromDatabase() }
     println("Waiting for email data")
 
-    val sendStatus = async(CommonPool) {
+    val sendStatus = GlobalScope.async {
         sendEmail(recipient.await(), msg.await())
     }
     return sendStatus.await()
 }
 
-fun main(args: Array<String>) = runBlocking(CommonPool) {
-    val job = launch(CommonPool) {
+fun main(args: Array<String>) = runBlocking {
+    val job = GlobalScope.launch {
         sendEmailSuspending()
         println("Email sent successfully.")
     }
