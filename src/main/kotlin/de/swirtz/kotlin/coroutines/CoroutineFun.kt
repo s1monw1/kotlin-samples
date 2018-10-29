@@ -1,6 +1,6 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 import org.slf4j.LoggerFactory
 import java.time.Instant
 import java.time.ZoneId

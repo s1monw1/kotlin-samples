@@ -1,9 +1,9 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.CoroutineName
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.newSingleThreadContext
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
 import java.time.Instant
 import java.time.ZoneId
 

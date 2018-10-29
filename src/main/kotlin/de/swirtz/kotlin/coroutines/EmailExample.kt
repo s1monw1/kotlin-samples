@@ -1,6 +1,6 @@
 package de.swirtz.kotlin.coroutines
 
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 
 
 suspend fun getReceiverAddressFromDatabase(): String {

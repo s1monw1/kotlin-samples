@@ -3,14 +3,10 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val kotlinVersion = plugins.getPlugin(KotlinPluginWrapper::class.java).kotlinPluginVersion
-val kotlinxCoroutinesVersion = "0.30.1"
+val kotlinxCoroutinesVersion = "1.0.0"
 
 plugins {
-    kotlin("jvm") version "1.2.70"
-}
-
-kotlin {
-    experimental.coroutines = Coroutines.ENABLE
+    kotlin("jvm") version "1.3.0"
 }
 
 tasks.withType<KotlinCompile> {
@@ -19,7 +15,7 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     compile("io.reactivex.rxjava2:rxkotlin:2.2.0")
-    compile(kotlin("stdlib-jre8", kotlinVersion))
+    compile(kotlin("stdlib-jdk8", kotlinVersion))
     compile(kotlin("reflect", kotlinVersion))
     compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
     compile("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.6")
@@ -35,5 +31,3 @@ repositories {
     mavenCentral()
     jcenter()
 }
-
-
